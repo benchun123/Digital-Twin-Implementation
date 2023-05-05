@@ -1,5 +1,14 @@
 # demonstrator_isaac_sim
 
+**Related Paper:**  
+
++ Benchun Zhou, et al. **Development of an Experimental Environment to Study the Challenges in Cyber-Physical Intralogistics Systems**[C]//2022 Logistic Journal. [[**Link**](https://www.logistics-journal.de/proceedings/2022/5585/view?set_language=de)] [[**PDF**](./README_Picture/2022_Logistic_Journal.pdf)] [[**Slide**](./README_Picture/2022_Logistic_Journal_Slide.pdf)] 
+
++ If you use the code in your academic work, please cite the above paper. 
+
+This repository shows the Simulation of the logistics environment with Isaac Sim. 
+![picture](./README_Picture/Overall_Robots.png)
+
 update 20230503
 add json file
 
