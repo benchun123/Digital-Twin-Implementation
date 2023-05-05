@@ -1,0 +1,199 @@
+Slider Documentation
+
+This manual concerns the use of the following ROS controllers for the uArm Slider model
+and its simulated model in gazebo.
+
+
+Topics
+
+1. Quickstart
+2. Overlook Software
+3. Construction
+4. Troubleshooting
+5. Download Software
+6. Firmware Arduino
+
+-----------------------------------------------------------------------------------------
+
+Launch / Quickstart:
+
+
+Real models:
+
+roslaunch slider real.launch
+
+	param(default value):	name(slider), number(1), x(0), y(0), z(0), Y(0)
+	(function to work with coordinates not implemented in real model yet)
+	
+	Attention: wait for messages "indentified on port ..." before entering commands!
+	
+	this launch automaticly starts a remote controller. Valid position are between -470 to 0
+
+Simulation:
+
+roslaunch slider spawn.launch start_gazebo:=true
+
+	param(default value):	name(slider), number(1), x(0), y(0), z(0), Y(0),
+				model("$(find slider)/urdf/slider.urdf.xacro")
+				start_gazebo(false), box(false), spawn_delay(0)
+				
+				
+To control the model, look in section "Overlook - Software"
+and/or type "rostopic list" / "rosservice list" in the terminal
+or use the exapmlary remote control
+
+-----------------------------------------------------------------------------------------
+
+Overlook - Software:
+
+
+Basic node structure:
+
+interface:	interface between ROS and Gazebo or the real model
+		provides basic controlling and reading functions for the server
+				
+		Topics:
+		
+		position	position relative to selected origin (move to 0 to see where!)
+				
+		busy		True while executing move command
+		
+		state_raw	raw data and configuration from slider (see in Firmware Arduino)
+				(pos_raw, target_raw, shift, timeout)
+		
+		
+		Attention:
+		
+		compatibility:	Interface is not hardware independent yet. If you try to
+				run this package on sth different than a jetson, you probably
+				have to add the name of your usb ports in the "list of names"
+				in the "find_slider()"-function in real_interface.py
+				
+		connection:	After launching, wait for log messages containing
+		
+				"found slider on port ..."
+				and
+				"interface initialized" 
+				
+				before entering commands!
+
+server: 	includes interface and provides basic ROS controlling actions and services
+		as well as state topics
+		also handles the 'availability' for incomming requests
+		
+		Services:
+		
+		state()	returns out current state (position/busy)
+		
+		set_shift()	set origin relative to us sensor [40,270] [mm] 
+		
+		set_timeout()	set maximum duration for tasks before cancle
+		
+		Actions:
+		
+		slider_move()		moves to position [-470,0]
+		
+		drive_to_limit_switch()      drive to limit switch
+		
+client:	provides exemplary action and service clients for testing purposes
+
+-----------------------------------------------------------------------------------------
+
+Construction:
+
+
+Manual:
+
+http://download.ufactory.cc/docs/en/slider%20user%20manual%20v2.2_20190718.pdf
+
+-----------------------------------------------------------------------------------------
+
+Troubleshooting:
+
+real:
+Most common:
+check plugs - test with controller buttons, if slider moves,
+wait for certain msg in console
+
+-----------------------------------------------------------------------------------------
+
+Download Software:
+
+
+Repositories:
+
+real model:
+(atm in jetson_ws https://git.scc.kit.edu/ugevv/jetson_ws.git)
+
+Firmware Arduino, real_interface, real_server, remote_client
+
+Simulation:
+
+(atm in 2021_pnp_ws https://git.scc.kitOverlook - Software.edu/ifl_robotics_public/2021_pnp_ws.git):
+
+interface, remote_server, remote client
+
+-----------------------------------------------------------------------------------------
+
+Firmware Arduino:
+
+decompress slider.zip and flash with Arduino IDE onto Controller.
+
+Wirering as in manual.
+
+Serial Port: BAUD 115200 (You can read it for testing purposes with Arduino IDE)
+
+Serial Message from Controller to PC:
+(current status in form of a String line,  Conveyor: Variable1:value1 Variable2:value2 ...)
+
+
+
+"Conveyor: Position:x ready:x Shift:x Target:x Timeout:x Limit_Switch:x Drive_To_Limit:x"
+
+
+
+Position:	measured position - shift relative to 
+
+ready:		available for tasks if true
+
+Shift:		distance [mm] between working area and ultrasonic sensor [40,270], default = 10
+
+Target:	current target position
+
+Timeout:	static max time [s] for execution of commands, cancles command after timeout,
+		default = 20s
+		
+Limit_Switch:	state of limit switch
+
+Drive_To_Limit: displays if this mode is activated
+
+
+Serial messages to control slider:
+
+Syntax of string messages to control slider with via serial port:
+
+It's important to start with "Slider: " so slider identifies message.
+Syntax for parameters: "Parameter:Value" - with spaces between parameters
+The parameters don't have to be neccessarily included. Order of Parameters
+is also optional.
+
+Parameters:
+	
+	Position	move slider to target position [0,470]
+			here relative to ultra sonic sensor!
+	
+	Shift		distance [mm] between working area and ultrasonic sensor [40,270],
+			default = 10
+	
+	Timeout:	static max time [s] for execution of commands, cancles command after
+			timeout, default = 20s
+			
+	To_Limit:	drive until detected by limit switch (0/1)
+	
+	
+
+Complete exemplary String:
+
+"Slider: Position:0 Shift:100 Timeout:20 To_Limit:0"
+
+--------------------------------------------------------------------------------------------

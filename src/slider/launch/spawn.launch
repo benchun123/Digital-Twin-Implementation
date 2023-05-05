@@ -1,0 +1,65 @@
+<launch>
+  <arg name="model" default="$(find slider)/urdf/model.urdf.xacro"/>
+  <arg name="name" default="slider"/>
+  <arg name="number" default=""/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="Y" default="0"/>
+  <arg name="start_gazebo" default="false"/>
+
+  <group if="$(arg start_gazebo)"> 
+      <include file="$(find uarm)/launch/gazebo.launch"/>
+  </group>
+
+  <!--rosparam command="load"
+            file="$(find slider)/config/slider_state.yaml"
+            ns="slider_joint_state" />
+
+  <rosparam command="load"
+            file="$(find slider)/config/slider_effort_control.yaml"
+            ns="slider_controller" />
+
+  <node name="slider_controller_spawner" pkg="controller_manager" type="spawner"
+    args="slider_joint_state
+          slider_controller
+          shutdown-timeout 3"/-->
+
+<group ns="/$(arg name)$(arg number)">
+  <param name="tf_prefix" value="atlas1" />
+   <param name="/$(arg name)$(arg number)/robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+      <node name="urdf_spawner_$(arg number)" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x) -y $(arg y) -z 0.0 -Y $(arg Y) -unpause -urdf -model $(arg name)$(arg number) -param robot_description " respawn="false" output="screen">
+      </node>
+      <rosparam command="load"
+                file="$(find slider)/config/joint_state.yaml"
+                ns="joint_state" />
+
+      <rosparam command="load"
+                file="$(find slider)/config/joint_slide.yaml"
+                ns="joint" />
+
+      <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher_$(arg number)">
+        <param name="publish_frequency" type="double" value="50.0" />
+      </node>
+
+      <node name="$(arg name)_controller_spawner" pkg="controller_manager" type="spawner" 
+        args="
+        joint_state
+        joint
+        --shutdown-timeout 3">
+      </node>
+  </group>
+
+  <node pkg="$(arg name)"  type="remote_server.py" name="$(arg name)$(arg number)_gazebo_server" output="screen">
+    <param name="ns" type="String" value="$(arg name)$(arg number)/" />
+    <param name="x" type="String" value="$(arg x)" />
+    <param name="y" type="String" value="$(arg y)" />
+    <param name="z" type="String" value="$(arg z)" />
+    <param name="Y" type="String" value="$(arg Y)" />
+  </node>/
+  <!--node pkg="$(arg name)"  type="remote_client.py" name="$(arg name)$(arg number)_move_client" output="screen">
+    <param name="ns_client" type="String" value="$(arg name)$(arg number)/" />
+  </node-->
+
+</launch>

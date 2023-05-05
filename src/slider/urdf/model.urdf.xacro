@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="slider">
+
+<link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <origin xyz = "0 0 0.012755" rpy = "0 0 0"/>
+    <parent link="world"/>
+    <child link="Base"/>
+  </joint>
+<link name="Base">
+    <static>true</static>
+	<inertial>
+		<origin xyz="0 0.0 0.01" rpy="1.570796327 0 0"/>
+		<mass value="4"/>
+		<inertia ixx="0.15" ixy="0.0" ixz="0.0" 
+				 iyy="0.15" iyz="0.0"  izz="0.15"/>
+	</inertial>
+    <!--contact_coefficients>
+        <mu "0"/>
+        <kp "10"/>
+        <kd "10"/>
+    </contact_coefficients-->
+	<visual>
+		<geometry>
+			<mesh filename="package://slider/urdf/STL-Files/slider_description/linearschiene.STL" scale="0.00092 0.00092 0.00092"/>
+		</geometry>
+		<origin xyz = "0 0.2869 0.02" rpy = "1.570796327 0 0"/>
+		<material name = "">
+			<color rgba = "0.3 0.3 0.3 1" />
+		</material>
+    </visual>
+    <collision>
+		<origin xyz = "0 0.2869 0.02" rpy = "1.570796327 0 0"/>
+		<geometry>
+			<mesh filename="package://slider/urdf/STL-Files/slider_description/linearschiene.STL" scale="0.00092 0.00092 0.00092"/>
+		</geometry>
+    </collision>
+</link>
+
+<gazebo reference="Base">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+</gazebo>
+
+<link name="wagen">
+	<inertial>
+		<origin xyz="0 0.735 0.022" rpy="1.570796327 0 0"/>
+		<mass value="0.6"/>
+		<inertia ixx="0.001" ixy="0.0" ixz="0.0" 
+				 iyy="0.001" iyz="0.0" izz="0.001"/>
+	</inertial>
+    <!--contact_coefficients>
+        <mu "0"/>
+        <kp "10"/>
+        <kd "10"/>
+    </contact_coefficients-->
+	<visual>
+		<geometry>
+			<mesh filename="package://slider/urdf/STL-Files/slider_description/wagen.STL" scale="0.00092 0.00092 0.00092"/>
+		</geometry>
+		<origin xyz = "0 0.735 0.022" rpy = "1.570796327 0 0" />
+		<material name = "">
+			<color rgba = "0.3 0.3 0.3 1" />
+		</material>
+    </visual>
+    <collision>
+        <origin xyz = "0 0.735 0.022" rpy = "1.570796327 0 0" />
+		<geometry>
+			<mesh filename="package://slider/urdf/STL-Files/slider_description/wagen.STL" scale="0.00092 0.00092 0.00092"/>
+		</geometry>
+      <surface>
+        <contact>
+            <ode>
+              <mu1>100.0</mu1>
+              <mu1>100.0</mu1>
+              <kp>1e15</kp>
+              <kd>1e13</kd>
+            </ode>
+          </contact>
+      </surface>
+    </collision>
+</link>
+
+<gazebo reference="wagen">
+    <material>Gazebo/Grey</material>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+</gazebo>
+
+<joint name="Joint_slide" type="prismatic">
+	<axis xyz="0 1 0"/>
+	<limit effort = "1.0" lower="-0.47" upper="0" velocity="0.1" />
+    <dynamics damping="1.4" friction="0"/>
+    <parent link="Base"/>
+    <child link="wagen"/>
+	<origin xyz= "0 0 0.0" rpy = " 0 0 0" />
+</joint>
+
+<transmission name="joint_slide_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="$joint_slide_motor">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="Joint_slide">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <!--robotNamespace>/</robotNamespace-->
+  </plugin>
+   <kp>1000000.0</kp>
+   <kd>1.0</kd>
+   <mu1>100.0</mu1>
+   <mu2>100.0</mu2>
+   <maxVel>0.1</maxVel>
+   <minDepth>0.001</minDepth>
+  
+</gazebo>
+</robot>

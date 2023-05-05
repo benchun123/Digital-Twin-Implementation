@@ -1,0 +1,272 @@
+type: velocity_controllers/JointGroupVelocityController
+joints:
+  - 0_roll_joint
+  - 1_roll_joint
+  - 2_roll_joint
+  - 3_roll_joint
+  - 4_roll_joint
+  - 5_roll_joint
+  - 6_roll_joint
+  - 7_roll_joint
+  - 8_roll_joint
+  - 9_roll_joint
+  - 10_roll_joint
+  - 11_roll_joint
+  - 12_roll_joint
+  - 13_roll_joint
+  - 14_roll_joint
+  - 15_roll_joint
+  - 16_roll_joint
+  - 17_roll_joint
+  - 18_roll_joint
+  - 19_roll_joint
+  - 20_roll_joint
+  - 21_roll_joint
+  - 22_roll_joint
+  - 23_roll_joint
+  - 24_roll_joint
+  - 25_roll_joint
+  - 26_roll_joint
+  - 27_roll_joint
+  - 28_roll_joint
+  - 29_roll_joint
+  - 30_roll_joint
+  - 31_roll_joint
+  - 32_roll_joint
+  - 33_roll_joint
+  - 34_roll_joint
+  - 35_roll_joint
+  - 36_roll_joint
+  - 37_roll_joint
+  - 38_roll_joint
+  - 39_roll_joint
+  - 40_roll_joint
+  - 41_roll_joint
+  - 42_roll_joint
+  - 43_roll_joint
+  - 44_roll_joint
+  - 45_roll_joint
+  - 46_roll_joint
+  - 47_roll_joint
+  - 48_roll_joint
+  - 49_roll_joint
+  - 50_roll_joint
+  - 51_roll_joint
+  - 52_roll_joint
+  - 53_roll_joint
+  - 54_roll_joint
+  - 55_roll_joint
+  - 56_roll_joint
+  - 57_roll_joint
+  - 58_roll_joint
+  - 59_roll_joint
+  - 60_roll_joint
+  - 61_roll_joint
+  - 62_roll_joint
+  - 63_roll_joint
+  - 64_roll_joint
+  - 65_roll_joint
+  - 66_roll_joint
+  - 67_roll_joint
+  - 68_roll_joint
+  - 69_roll_joint
+  - 70_roll_joint
+  - 71_roll_joint
+  - 72_roll_joint
+  - 73_roll_joint
+  - 74_roll_joint
+  - 75_roll_joint
+  - 76_roll_joint
+  - 77_roll_joint
+  - 78_roll_joint
+  - 79_roll_joint
+  - 80_roll_joint
+  - 81_roll_joint
+  - 82_roll_joint
+  - 83_roll_joint
+  - 84_roll_joint
+  - 85_roll_joint
+  - 86_roll_joint
+  - 87_roll_joint
+  - 88_roll_joint
+  - 89_roll_joint
+  - 90_roll_joint
+  - 91_roll_joint
+  - 92_roll_joint
+  - 93_roll_joint
+  - 94_roll_joint
+  - 95_roll_joint
+  - 96_roll_joint
+  - 97_roll_joint
+  - 98_roll_joint
+  - 99_roll_joint
+  - 100_roll_joint
+  - 101_roll_joint
+  - 102_roll_joint
+  - 103_roll_joint
+  - 104_roll_joint
+  - 105_roll_joint
+  - 106_roll_joint
+  - 107_roll_joint
+  - 108_roll_joint
+  - 109_roll_joint
+  - 110_roll_joint
+  - 111_roll_joint
+  - 112_roll_joint
+  - 113_roll_joint
+  - 114_roll_joint
+  - 115_roll_joint
+  - 116_roll_joint
+  - 117_roll_joint
+  - 118_roll_joint
+  - 119_roll_joint
+  - 120_roll_joint
+  - 121_roll_joint
+  - 122_roll_joint
+  - 123_roll_joint
+  - 124_roll_joint
+  - 125_roll_joint
+  - 126_roll_joint
+  - 127_roll_joint
+  - 128_roll_joint
+  - 129_roll_joint
+  - 130_roll_joint
+  - 131_roll_joint
+  - 132_roll_joint
+  - 133_roll_joint
+  - 134_roll_joint
+gains:
+  0_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  1_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  2_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  3_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  4_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  5_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  6_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  7_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  8_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  9_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  10_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  11_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  12_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  13_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  14_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  15_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  16_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  17_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  18_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  19_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  20_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  21_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  22_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  23_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  24_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  25_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  26_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  27_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  28_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  29_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  30_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  31_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  32_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  33_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  34_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  35_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  36_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  37_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  38_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  39_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  40_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  41_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  42_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  43_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  44_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  45_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  46_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  47_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  48_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  49_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  50_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  51_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  52_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  53_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  54_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  55_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  56_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  57_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  58_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  59_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  60_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  61_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  62_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  63_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  64_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  65_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  66_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  67_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  68_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  69_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  70_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  71_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  72_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  73_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  74_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  75_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  76_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  77_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  78_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  79_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  80_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  81_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  82_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  83_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  84_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  85_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  86_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  87_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  88_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  89_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  90_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  91_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  92_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  93_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  94_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  95_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  96_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  97_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  98_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  99_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  101_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  102_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  103_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  104_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  105_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  106_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  107_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  108_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  109_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  110_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  111_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  112_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  113_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  114_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  115_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  116_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  117_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  118_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  119_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  120_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  121_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  122_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  123_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  124_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  125_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  126_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  127_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  128_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  129_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  130_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  131_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  132_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  133_roll_joint: {p: 100, i: 1.0, d: 0.0}
+  134_roll_joint: {p: 100, i: 1.0, d: 0.0}

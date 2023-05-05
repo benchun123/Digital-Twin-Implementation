@@ -1,0 +1,153 @@
+uArm Documentation
+
+This manual concerns the use of the following ROS controllers for the uArm Slider model
+and its simulated model in gazebo.
+
+
+Topics
+
+1. Quickstart
+2. Overlook Software
+3. Construction
+4. Troubleshooting
+5. Download Software
+6. Firmware Arduino
+
+-----------------------------------------------------------------------------------------
+
+Launch / Quickstart:
+
+
+Real models:
+
+roslaunch uarm real.launch
+
+	param(default value):	name(uarm), number(1), x(0), y(0), z(0), Y(0)
+	(function to work with coordinates not implemented in real model yet)
+	
+	Attention: Wait for message "* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)"
+		   before entering commands!
+
+	
+	this launch automaticly starts a remote controller. Valid position are between -470 to 0
+
+Simulation:
+
+roslaunch uarm spawn.launch start_gazebo:=true
+
+	param(default value):	name(slider), number(1), x(0), y(0), z(0), Y(0),
+				model("$(find uarm)/urdf/light_model.urdf.xacro")
+				start_gazebo(false), box(false), spawn_delay(0)
+				
+				
+To control the model, look in section "Overlook - Software"
+and/or type "rostopic list" / "rosservice list" in the terminal
+or use the exapmlary remote control
+
+-----------------------------------------------------------------------------------------
+
+Overlook - Software:
+
+
+Basic node structure:
+
+interface:	interface between ROS and Gazebo or the real model
+		provides basic controlling and reading functions for the server
+				
+		Topics:
+						
+		busy		True while executing move command		
+		
+		Attention:
+				
+		connection:	After launching, wait for a log message containing
+		
+				"* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)"
+				
+				before entering commands!
+
+server: 	includes interface and provides basic ROS controlling actions and services
+		as well as state topics
+		also handles the 'availability' for incomming requests
+		
+		Services:
+		
+		get_state()	returns out current state (position/busy/pump)
+		
+		set_pump(state) turn vacuum gripper pump on/off (true/false)
+		
+		Actions:
+		
+		move		moves to position 		
+		(x,y,z,w)
+				#################################
+				#                               #
+				#       valid positions         #
+				#                               #
+				#      x element [30, 280]      #
+				#                               #
+				#      y element [-280, 280]    #
+				#                               #
+				#      z element [-120, 130]    #
+				#                               #
+				#      w element [0, 180]       #
+				#                               #
+				#  RADIUS in x-y Ebene > 150    #
+				#                               #
+				#  ATTENTION: Platform at z=0   #
+				#                               #
+				#################################
+				
+		auto_move	go straight up to max height, then over target position
+		(x,y,z,w)	and then straight down
+				this function provides a fluent combined movement
+				
+		reset		recalibrate position at (180,0,130)
+		
+client:	provides exemplary action and service clients for testing purposes
+
+-----------------------------------------------------------------------------------------
+
+Construction:
+
+
+Manual:
+
+http://download.ufactory.cc/docs/en/uArm%20pro%20User%20Manual%20v1.1.0.pdf
+
+
+-----------------------------------------------------------------------------------------
+
+Troubleshooting:
+
+real:
+Most common:
+check plugs - test with controller buttons, if slider moves,
+wait for certain msg in console
+
+-----------------------------------------------------------------------------------------
+
+Download Software:
+
+
+Repositories:
+
+real model:
+(atm in jetson_ws https://git.scc.kit.edu/ugevv/jetson_ws.git)
+
+Firmware Arduino, real_interface, real_server, remote_client
+
+Simulation:
+
+(atm in 2021_pnp_ws https://git.scc.kitOverlook - Software.edu/ifl_robotics_public/2021_pnp_ws.git):
+
+interface, remote_server, remote client
+
+-----------------------------------------------------------------------------------------
+
+Firmware Arduino:
+
+Istructions can be found in manual
+
+http://download.ufactory.cc/docs/en/uArm%20pro%20User%20Manual%20v1.1.0.pdf
+--------------------------------------------------------------------------------------------

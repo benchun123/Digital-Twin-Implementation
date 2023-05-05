@@ -1,0 +1,21 @@
+<launch>
+  <arg name="name" default="slider"/>
+  <arg name="number" default="1"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="Y" default="0"/>
+
+  <node pkg="slider"  type="isaac_server.py" name="$(arg name)$(arg number)_isaac_server" output="screen">
+    <param name="ns" type="String" value="$(arg name)$(arg number)/" />
+    <param name="x" type="String" value="$(arg x)" />
+    <param name="y" type="String" value="$(arg y)" />
+    <param name="z" type="String" value="$(arg z)" />
+    <param name="Y" type="String" value="$(arg Y)" />
+  </node>
+
+  <!-- <node pkg="slider"  type="remote_client.py" name="$(arg name)$(arg number)_move_client" output="screen">
+    <param name="ns_client" type="String" value="$(arg name)$(arg number)/" />
+  </node> -->
+
+</launch>

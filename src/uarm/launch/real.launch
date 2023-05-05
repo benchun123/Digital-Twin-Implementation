@@ -1,0 +1,17 @@
+<launch>
+  <arg name="name" default="uarm"/>
+  <arg name="number" default="1"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="Y" default="0"/>
+
+  <node name="$(arg name)$(arg number)_real_interface" pkg="uarm" type="start_real_interface.sh" />
+  
+  <node pkg="$(arg name)"  type="real_server.py" name="$(arg name)$(arg number)_real_server" output="screen">
+    <param name="ns" type="String" value="$(arg name)$(arg number)/" />
+  </node>
+  <node pkg="$(arg name)"  type="remote_client.py" name="$(arg name)$(arg number)_move_client" output="screen">
+    <param name="ns_client" type="String" value="$(arg name)$(arg number)/" />
+  </node>
+
+</launch>
